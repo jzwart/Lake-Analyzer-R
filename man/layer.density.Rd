@@ -4,65 +4,56 @@
 \title{
 Returns the average density of a layer between two depths.
 }
-\description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+\description{ 
+This function calculates the average density of a layer of water between two depths.
 }
 \usage{
 layer.density(top, bottom, wtr, depths, bthA, bthD, sal)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{top}{
-%%     ~~Describe \code{top} here~~
-}
-  \item{bottom}{
-%%     ~~Describe \code{bottom} here~~
-}
-  \item{wtr}{
-%%     ~~Describe \code{wtr} here~~
-}
-  \item{depths}{
-%%     ~~Describe \code{depths} here~~
-}
-  \item{bthA}{
-%%     ~~Describe \code{bthA} here~~
-}
-  \item{bthD}{
-%%     ~~Describe \code{bthD} here~~
-}
-  \item{sal}{
-%%     ~~Describe \code{sal} here~~
-}
+  \item{top}{ Numeric value of the depth (m) of the top of the layer from the water surface}
+  \item{bottom}{ Numeric value of the depth (m) of the bottom of the layer from the water surface}
+  \item{wtr}{ Numeric vector of water temperature in °C}
+  \item{depths}{ Numeric vector of depths (m) corresponding to water temperature vector}
+  \item{bthA}{ Numeric vector of water body cross sectional area (m2) corresponding to bthD depths}
+  \item{bthD}{ Numeric vector of water body bathymetric depths (m) corresponding to areal bthA values}
+  \item{sal}{ Optional numeric vector of salinity in Practical Salinity Units corresponding to water temperature vector. If left blank, salinity is set to be zero}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Numeric value of average water density for bounded layer in kg/m^3
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Jake Zwart
 }
 \note{
-%%  ~~further notes~~
+water.density function is required to run the layer.density function
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{water.density}
 }
 \examples{
+top     <- 2
+bottom  <- 6
+wtr     <- c(25.2,25.1,24.1,22.0,19.8,15.3,12.0,11.1)
+depths  <- c(0,1,2,3,4,5,6,7) 
+bthA    <- c(10000,8900,5000,3500,2000,1000,300,10)
+bthD    <- c(0,1,2,3,4,5,6,7)
+layer.density(top,bottom,wtr,depths,bthA,bthD)
+
 ##---- Should be DIRECTLY executable !! ----
 ##-- ==>  Define data, use random,
 ##--	or do  help(data=index)  for the standard data sets.
+}
 
 ## The function is currently defined as
 function (top, bottom, wtr, depths, bthA, bthD, sal) 
@@ -125,7 +116,5 @@ function (top, bottom, wtr, depths, bthA, bthD, sal)
     return(aveDensity)
   }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{limnology}
+\keyword{GLEON}
